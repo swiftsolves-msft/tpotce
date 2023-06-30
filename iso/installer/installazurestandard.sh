@@ -13,6 +13,9 @@ fi
 # I. Global vars #
 ##################
 
+myCONF_WEB_USER="webuser"
+myCONF_WEB_PW="w3b$ecrets2!"
+$myCONF_TPOT_FLAVOR="STANDARD"
 myBACKTITLE="T-Pot-Installer"
 myCONF_FILE="/root/installer/iso.conf"
 myPROGRESSBOXCONF=" --backtitle "$myBACKTITLE" --progressbox 24 80"
@@ -525,6 +528,9 @@ if [ "$myCONF_PROXY_USE" == "0" ];
 fi
 ### ---> End proxy setup
 
+myCONF_WEB_USER="webuser"
+myCONF_WEB_PW="w3b$ecrets2!"
+$myCONF_TPOT_FLAVOR="STANDARD"
 # Let's ask the user for install flavor
 if [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ] || [ "$myTPOT_DEPLOYMENT_TYPE" == "user" ];
   then
@@ -583,6 +589,11 @@ fi
 # Let's ask for web user credentials if deployment type is iso or user
 # In case of auto, credentials are created from config values
 # Skip this step entirely if SENSOR flavor
+
+myCONF_WEB_USER='webuser'
+myCONF_WEB_PW='w3b$ecrets2!'
+$myCONF_TPOT_FLAVOR" == "STANDARD"
+
 if [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ] || [ "$myTPOT_DEPLOYMENT_TYPE" == "user" ];
   then
     myOK="1"
@@ -596,7 +607,7 @@ if [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ] || [ "$myTPOT_DEPLOYMENT_TYPE" == "use
         myCONF_WEB_USER=$(echo $myCONF_WEB_USER | tr -cd "[:alnum:]_.-")
         dialog --keep-window --backtitle "$myBACKTITLE" --title "[ Your username is ]" --yesno "\n$myCONF_WEB_USER" 7 50
         myOK=$?
-        if [ "$myOK" = "0" ] && [ "$myCONF_WEB_USER" != "tsec" ] && [ "$myCONF_WEB_USER" != "" ];
+        if [ "$myOK" = "0" ] && [ "$my" != "tsec" ] && [ "$my" != "" ];
           then
             break
         fi
@@ -635,6 +646,10 @@ fi
 
 dialog --clear
 
+# lets statically set the user \ pass for auto
+
+
+
 ##########################
 # VI. Installation phase #
 ##########################
@@ -651,7 +666,7 @@ if ! [ "$myCONF_TPOT_FLAVOR" == "SENSOR" ];
   then
     fuBANNER "Webuser creds"
     mkdir -p /data/nginx/conf
-    htpasswd -b -c /data/nginx/conf/nginxpasswd "$myCONF_WEB_USER" "$myCONF_WEB_PW"
+    htpasswd -b -c /data/nginx/conf/nginxpasswd "$my" "$myCONF_WEB_PW"
     echo
 fi
 
