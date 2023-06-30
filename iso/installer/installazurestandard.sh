@@ -602,7 +602,7 @@ if [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ] || [ "$myTPOT_DEPLOYMENT_TYPE" == "use
         myCONF_WEB_USER=$(echo $myCONF_WEB_USER | tr -cd "[:alnum:]_.-")
         dialog --keep-window --backtitle "$myBACKTITLE" --title "[ Your username is ]" --yesno "\n$myCONF_WEB_USER" 7 50
         myOK=$?
-        if [ "$myOK" = "0" ] && [ "$my" != "tsec" ] && [ "$my" != "" ];
+	if [ "$myOK" = "0" ] && [ "$myCONF_WEB_USER" != "tsec" ] && [ "$myCONF_WEB_USER" != "" ];
           then
             break
         fi
@@ -661,7 +661,7 @@ if ! [ "$myCONF_TPOT_FLAVOR" == "SENSOR" ];
   then
     fuBANNER "Webuser creds"
     mkdir -p /data/nginx/conf
-    htpasswd -b -c /data/nginx/conf/nginxpasswd "$my" "$myCONF_WEB_PW"
+    htpasswd -b -c /data/nginx/conf/nginxpasswd "$myCONF_WEB_USER" "$myCONF_WEB_PW"
     echo
 fi
 
