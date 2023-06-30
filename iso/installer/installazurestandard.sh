@@ -13,9 +13,6 @@ fi
 # I. Global vars #
 ##################
 
-myCONF_WEB_USER="webuser"
-myCONF_WEB_PW="w3b$ecrets2!"
-$myCONF_TPOT_FLAVOR="STANDARD"
 myBACKTITLE="T-Pot-Installer"
 myCONF_FILE="/root/installer/iso.conf"
 myPROGRESSBOXCONF=" --backtitle "$myBACKTITLE" --progressbox 24 80"
@@ -530,7 +527,6 @@ fi
 
 myCONF_WEB_USER="webuser"
 myCONF_WEB_PW="w3b$ecrets2!"
-$myCONF_TPOT_FLAVOR="STANDARD"
 # Let's ask the user for install flavor
 if [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ] || [ "$myTPOT_DEPLOYMENT_TYPE" == "user" ];
   then
@@ -592,7 +588,6 @@ fi
 
 myCONF_WEB_USER='webuser'
 myCONF_WEB_PW='w3b$ecrets2!'
-$myCONF_TPOT_FLAVOR" == "STANDARD"
 
 if [ "$myTPOT_DEPLOYMENT_TYPE" == "iso" ] || [ "$myTPOT_DEPLOYMENT_TYPE" == "user" ];
   then
