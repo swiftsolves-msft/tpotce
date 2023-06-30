@@ -742,41 +742,9 @@ echo "$mySSHSETTINGS" | tee -a /etc/ssh/sshd_config
 # Do not allow root login for cockpit
 sed -i '2i\auth requisite pam_succeed_if.so uid >= 1000' /etc/pam.d/cockpit
 
-# Let's make sure only myCONF_TPOT_FLAVOR images will be downloaded and started
-case $myCONF_TPOT_FLAVOR in
-  STANDARD)
-    fuBANNER "STANDARD"
-    ln -s /opt/tpot/etc/compose/standard.yml $myTPOTCOMPOSE
-  ;;
-  HIVE)
-    fuBANNER "HIVE"
-    ln -s /opt/tpot/etc/compose/hive.yml $myTPOTCOMPOSE
-  ;;
-  HIVE_SENSOR)
-    fuBANNER "HIVE_SENSOR"
-    ln -s /opt/tpot/etc/compose/hive_sensor.yml $myTPOTCOMPOSE
-  ;;
-  INDUSTRIAL)
-    fuBANNER "INDUSTRIAL"
-    ln -s /opt/tpot/etc/compose/industrial.yml $myTPOTCOMPOSE
-  ;;
-  LOG4J)
-    fuBANNER "LOG4J"
-    ln -s /opt/tpot/etc/compose/log4j.yml $myTPOTCOMPOSE
-  ;;
-  MEDICAL)
-    fuBANNER "MEDICAL"
-    ln -s /opt/tpot/etc/compose/medical.yml $myTPOTCOMPOSE
-  ;;
-  MINI)
-    fuBANNER "MINI"
-    ln -s /opt/tpot/etc/compose/mini.yml $myTPOTCOMPOSE
-  ;;
-  SENSOR)
-    fuBANNER "SENSOR"
-    ln -s /opt/tpot/etc/compose/sensor.yml $myTPOTCOMPOSE
-  ;;
-esac
+# Let's deploy standard flavor image
+fuBANNER "STANDARD"
+ln -s /opt/tpot/etc/compose/standard.yml /opt/tpot/etc/tpot.yml
 
 # Let's load docker images
 function fuPULLIMAGES {
